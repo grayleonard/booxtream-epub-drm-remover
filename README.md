@@ -7,7 +7,7 @@ This script is an implementation of Institute of Biblio-Immunology's First Commu
 
 It removes the various manifestations of BooXtream's 'Social DRM' from ePub files.
 
-The seven DRM trackers that are removed are as such:
+The seven DRM watermarks that are removed ar:
 ```
 "WM0-2 are overt (readily visible) watermarks and are optional (meaning they may not necessarily be present):
   [WM0] -- Ex Libris Image Watermark
