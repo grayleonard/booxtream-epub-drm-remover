@@ -23,7 +23,7 @@
 
 import os
 import shutil
-import random, string
+import random
 import sys, getopt
 import zipfile
 from bs4 import BeautifulSoup as bs
