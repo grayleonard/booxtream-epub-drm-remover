@@ -1,4 +1,4 @@
-# BooXtream ePub DRM Remover
+BooXtream ePub DRM Remover
 ===
 
 This script is an implementation of Institute of Biblio-Immunology's First Communique:
