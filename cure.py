@@ -39,7 +39,7 @@ def wm0(entry):
 	# Set prefix as the root ePub directory; all files are relative to cwd
 	print entry
 	if "/" in entry:
-		prefix = os.join([entry.split("/")[0], "/"])
+		prefix = os.path.join(entry.split("/")[0])
 
 	cover = open(entry).read()
 	soup = bs(cover, "html.parser")
@@ -127,7 +127,7 @@ def wm5():
 			if ".css" in filename:
 				print "[wm5] Found CSS file: {0}".format(filename)
 				css_path = ''.join([root, "/", filename])
-	f = open(os.path.join(prefix, css_path), "rw")
+	f = open(css_path, "rw")
 	tmp = ""
 	for line in f:
 		if "boekstaaf" not in line:
