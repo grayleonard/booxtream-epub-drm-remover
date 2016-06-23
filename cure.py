@@ -269,14 +269,14 @@ def main(argv):
 	try:
 		opts, args = getopt.getopt(argv,"hi:o:", ["in=", "out="])
 	except getopt.GetoptError:
-		print 'cure.py -i <infected .epub> -i <destination>'
+		print 'cure.py -i <infected .epub> -o <destination>'
 		sys.exit(2)
 	if len(opts) == 0:
-		print 'cure.py -i <infected .epub> -i <destination>'
+		print 'cure.py -i <infected .epub> -o <destination>'
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt in ("-h", "--help"):
-			print 'cure.py -i <infected .epub> -i <destination>'
+			print 'cure.py -i <infected .epub> -o <destination>'
 		if opt in ("-i", "--in"):
 			infected = arg
 		if opt in ("-o", "--out"):
