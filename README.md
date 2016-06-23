@@ -35,4 +35,4 @@ System requirements:
 Running
 ===
 
-```cure.py -i <infected .epub> -i <destination>```
+```cure.py -i <infected .epub> -o <destination>```
