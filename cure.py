@@ -36,7 +36,7 @@ def wm0(entry):
 	global prefix
 	print '\n\n === Removing \'Ex Libris\' watermark (WM0) === \n\n'
 
-	# Set prefix as the root ePub directory; all files are relative to cwd
+	# Set prefix as the root ePub directory; makes files relative to cwd
 	print entry
 	if "/" in entry:
 		prefix = os.path.join(entry.split("/")[0])
@@ -46,13 +46,13 @@ def wm0(entry):
 
 	# Get filename of exlibris watermark
 	exlibris = soup.find("item", id="exlibris") 
-	exlibris_div = soup.find("div", { "class": "exlibris"} )
 	exlibris_filename =  dict(exlibris.attrs)[u'href']
 	os.remove(os.path.join(prefix, exlibris_filename))
 	references = searchDirectoryForString('.', "exlibris")
 	for reference in references:
 		soup, tags = findAttrInFile(reference, "exlibris")
 		removeTagsFromFile(reference, soup, tags)
+
 	# Get rid of BooXtream tags as well
 	references = searchDirectoryForString('.', "BooXtream")
 	for reference in references:
@@ -73,7 +73,7 @@ def wm1():
 	for reference in references:
 		soup, tags = findAttrInFile(reference, disclaimer)
 		removeTagsFromFile(reference, soup, tags)
-	os.remove(os.path.join(prefix, disclaimer))
+	os.remove(disclaimer)
 	print '\nOK'
 
 def wm2():
@@ -215,7 +215,6 @@ def removeTagFromFile(path, soup, tags):
 def removeTagsFromFile(path, soup, tags):
 	print '[removeTagsFromFile] Removing {0} from {1}'.format(tags, path)
 	for tag in tags:
-		print 'String:{0}'.format(str(tag))
 		tag.extract()
 	writeToFile(path, soup.prettify().encode('utf-8'))
 
@@ -290,6 +289,7 @@ def main(argv):
 	wm1()
 	wm2()
 	wm3(entry)
+	wm4()
 	wm5()
 	wm6()
 	buildEpub(output)
