@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ $2 = "" ]
-	then echo 'md5sum.sh file1 file2'
+	then echo 'diff.sh file1 file2'
 	exit
 fi
 
