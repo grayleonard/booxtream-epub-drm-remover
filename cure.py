@@ -23,9 +23,9 @@
 
 import os
 import shutil
-import random
 import sys, getopt
 import zipfile
+import hashlib
 from bs4 import BeautifulSoup as bs
 from wand.image import Image
 
@@ -96,7 +96,7 @@ def wm3(entry):
 	soup = bs(handler, "html.parser")
 	items = soup.findAll("item")
 	for item in items:
-		rand_name = u''.join(random.SystemRandom().choice("InMemoriumAaronSwartzNov81986Jan112013") for _ in range(6))
+		rand_name = deterministicNameGen()
 		href = dict(item.attrs)[u'href']
 		filetype = href.split('.')[-1]
 		rand_name += '.'
@@ -162,6 +162,24 @@ def wm6():
 			img.save(filename=path)
 	print '\nOK'
 	
+idx = 0
+def deterministicNameGen():
+	string = '''We need to take information, wherever it is stored, make our copies and share them with
+	the world. We need to take stuff that's out of copyright and add it to the archive. We need
+	to buy secret databases and put them on the Web. We need to download scientific
+	journals and upload them to file sharing networks. We need to fight for Guerilla Open
+	Access.
+
+	With enough of us, around the world, we'll not just send a strong message opposing the
+	privatization of knowledge — we'll make it a thing of the past. Will you join us?
+
+	Aaron Swartz
+	July 2008, Eremo, Italy
+	'''
+	global idx
+	name = hashlib.md5(''.join([string, str(idx)]))
+	idx += 1
+	return name.hexdigest()[0:20]
 
 
 def searchDirectoryForString(path, match):
