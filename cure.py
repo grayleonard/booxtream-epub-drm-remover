@@ -67,8 +67,8 @@ def wm1():
 	for root, dirnames, filenames in os.walk("."):
 		for filename in filenames:
 			if "disclaimer" in filename:
-				print "[wm1] Found disclaimer file: {0}".format(filename)
-				disclaimer = filename
+				print "[wm1] Found disclaimer file: {0}".format('/'.join([root, filename]))
+				disclaimer = '/'.join([root, filename])
 	references = searchDirectoryForString('.', disclaimer)
 	for reference in references:
 		soup, tags = findAttrInFile(reference, disclaimer)
@@ -171,7 +171,7 @@ def deterministicNameGen():
 	Access.
 
 	With enough of us, around the world, we'll not just send a strong message opposing the
-	privatization of knowledge — we'll make it a thing of the past. Will you join us?
+	privatization of knowledge - we'll make it a thing of the past. Will you join us?
 
 	Aaron Swartz
 	July 2008, Eremo, Italy
