@@ -46,18 +46,21 @@ def wm0(entry):
 
 	# Get filename of exlibris watermark
 	exlibris = soup.find("item", id="exlibris") 
-	exlibris_filename =  dict(exlibris.attrs)[u'href']
-	os.remove(os.path.join(prefix, exlibris_filename))
-	references = searchDirectoryForString('.', "exlibris")
-	for reference in references:
-		soup, tags = findAttrInFile(reference, "exlibris")
-		removeTagsFromFile(reference, soup, tags)
+	if exlibris is not None:
+		exlibris_filename =  dict(exlibris.attrs)[u'href']
+		os.remove(os.path.join(prefix, exlibris_filename))
+		references = searchDirectoryForString('.', "exlibris")
+		for reference in references:
+			soup, tags = findAttrInFile(reference, "exlibris")
+			removeTagsFromFile(reference, soup, tags)
 
-	# Get rid of BooXtream tags as well
-	references = searchDirectoryForString('.', "BooXtream")
-	for reference in references:
-		soup, tags = findAttrInFile(reference, "BooXtream")
-		removeTagsFromFile(reference, soup, tags)
+		# Get rid of BooXtream tags as well
+		references = searchDirectoryForString('.', "BooXtream")
+		for reference in references:
+			soup, tags = findAttrInFile(reference, "BooXtream")
+			removeTagsFromFile(reference, soup, tags)
+	else:
+		print '\nEx Libris watermark not found'
 	print '\nOK'
 
 def wm1():
@@ -69,6 +72,9 @@ def wm1():
 			if "disclaimer" in filename:
 				print "[wm1] Found disclaimer file: {0}".format('/'.join([root, filename]))
 				disclaimer = '/'.join([root, filename])
+	if disclaimer == "":
+		print '\nNo Disclaimer file found'
+		return
 	references = searchDirectoryForString('.', disclaimer)
 	for reference in references:
 		soup, tags = findAttrInFile(reference, disclaimer)
