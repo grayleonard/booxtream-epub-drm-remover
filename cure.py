@@ -45,7 +45,27 @@ def wm0(entry):
 	soup = bs(cover, "html.parser")
 
 	# Get filename of exlibris watermark
+	exlibrispage = soup.find("item", id="exlibrispage") 
+        print exlibrispage
+	if exlibrispage is not None:
+		exlibrispage_filename =  dict(exlibrispage.attrs)[u'href']
+		os.remove(os.path.join(prefix, exlibrispage_filename))
+		references = searchDirectoryForString('.', "exlibrispage")
+		for reference in references:
+			soup, tags = findAttrInFile(reference, "exlibrispage")
+			removeTagsFromFile(reference, soup, tags)
+
+		# Get rid of BooXtream tags as well
+		references = searchDirectoryForString('.', "BooXtream")
+		for reference in references:
+			soup, tags = findAttrInFile(reference, "BooXtream")
+			removeTagsFromFile(reference, soup, tags)
+	else:
+		print '\nEx Libris watermark not found'
+
+	# Get filename of exlibris watermark
 	exlibris = soup.find("item", id="exlibris") 
+        print exlibris
 	if exlibris is not None:
 		exlibris_filename =  dict(exlibris.attrs)[u'href']
 		os.remove(os.path.join(prefix, exlibris_filename))
