@@ -54,12 +54,6 @@ def wm0(entry):
 		for reference in references:
 			soup, tags = findAttrInFile(reference, "exlibrispage")
 			removeTagsFromFile(reference, soup, tags)
-
-		# Get rid of BooXtream tags as well
-		references = searchDirectoryForString('.', "BooXtream")
-		for reference in references:
-			soup, tags = findAttrInFile(reference, "BooXtream")
-			removeTagsFromFile(reference, soup, tags)
 	else:
 		print '\nEx Libris watermark not found'
 
