@@ -17,7 +17,8 @@ WM3-6 are covert (not readily visible) watermarks and are always present:
   [WM3] -- Filename Watermarks
   [WM4] -- Timestamp Fingerprinting
   [WM5] -- CSS Watermark
-  [WM6] -- Image Metadata Watermarks"
+  [WM6] -- Image Metadata Watermarks
+  [WM7] -- Ebook.de meta file protection"
 ```
 
 Installation
