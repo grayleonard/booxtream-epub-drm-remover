@@ -183,7 +183,7 @@ def wm6():
 			img.save(filename=path)
 	print '\nOK'
 
-	def wm7():
+def wm7():
 	print '\n\n === Removing \'eBooks.de\' watermark (WM7) === \n\n'
 	if os.path.isfile("META-INF/cdp.info"):
 		print "[wm7] Removing file: META-INF/cdp.info"
