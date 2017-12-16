@@ -19,6 +19,7 @@
 	[WM4] -- Timestamp Fingerprinting
 	[WM5] -- CSS Watermark
 	[WM6] -- Image Metadata Watermarks"
+	[WM7] -- eBook.de Watermark"
 '''
 
 import os
@@ -181,7 +182,17 @@ def wm6():
 			img.strip()
 			img.save(filename=path)
 	print '\nOK'
-	
+
+	def wm7():
+	print '\n\n === Removing \'eBooks.de\' watermark (WM7) === \n\n'
+	if os.path.isfile("META-INF/cdp.info"):
+		print "[wm7] Removing file: META-INF/cdp.info"
+		os.remove("META-INF/cdp.info")
+	else:
+		print "[wm7] No eBooks.de watermark found"
+	print '\nOK'
+
+
 idx = 0
 def deterministicNameGen():
 	string = '''We need to take information, wherever it is stored, make our copies and share them with
@@ -330,6 +341,7 @@ def main(argv):
 	wm4()
 	wm5()
 	wm6()
+	wm7()
 	buildEpub(output)
 	clean()
 
