@@ -149,6 +149,7 @@ def wm5():
 				print "[wm5] Found CSS file: {0}".format(filename)
 				css_path = ''.join([root, "/", filename])
 	if css_path == "":
+		print '[wm5] No CSS files found\nOK'
 		return
 	f = open(css_path, "rw")
 	tmp = ""
