@@ -148,6 +148,8 @@ def wm5():
 			if ".css" in filename:
 				print "[wm5] Found CSS file: {0}".format(filename)
 				css_path = ''.join([root, "/", filename])
+	if css_path == "":
+		return
 	f = open(css_path, "rw")
 	tmp = ""
 	for line in f:
