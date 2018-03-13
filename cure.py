@@ -18,7 +18,7 @@
 	[WM3] -- Filename Watermarks
 	[WM4] -- Timestamp Fingerprinting
 	[WM5] -- CSS Watermark
-	[WM6] -- Image Metadata Watermarks"
+	[WM6] -- Image Metadata Watermarks
 	[WM7] -- eBook.de Watermark"
 '''
 
