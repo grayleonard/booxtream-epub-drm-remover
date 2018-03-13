@@ -25,7 +25,7 @@ Installation
 
 Python requirements:
 
-```BeautifulSoup4, Wand (both can be installed via pip or easy_install)```
+```BeautifulSoup4, Wand, Six (all can be installed via pip or easy_install)```
 
 System requirements:
 
