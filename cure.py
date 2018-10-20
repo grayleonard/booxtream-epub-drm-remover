@@ -114,12 +114,14 @@ def wm1():
 def wm2():
 	global prefix
 	print('\n\n === Removing \'licensing\' watermark (WM2) === \n\n')
-	references = searchDirectoryForString('.', "is licensed to")
+	references = set(searchDirectoryForString('.', "is licensed to"))
+	references.update(searchDirectoryForString('.', "belongs to"))
 	for reference in references:
 		soup, tags = findTagsInFile(reference)
 		for tag in tags:
 			if len(tag.findChildren()) == 0: # No <p> with other <p> inside them
-				if "is licensed to" in cure_2txt(tag):
+				text_tag = cure_2txt(tag)
+				if "is licensed to" in text_tag or "belongs to" in text_tag:
 					print("Found match in file: {0}".format(tag))
 					removeTagFromFile(reference, soup, tag)
 	print('\nOK')
